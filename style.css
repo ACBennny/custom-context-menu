@@ -1,0 +1,209 @@
+/*******************************************************
+ * Styling of the custom context menu
+ * 
+ * @author (Anyanwu Benedict Chukwuemeka)
+ * @version (v0.01)
+ *******************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bcg-handle) var(--bcg-trpnt);
+}
+
+html:root
+{
+    --bcg-base: #38776d;
+    --bcg-bright: #ffffff;
+    --bcg-handle: #cdcdcdcd;
+    --bcg-shade: #77777777;
+    --bcg-trpnt: #00000000;
+    --font-clr-heavy: #ffffff;
+    --font-clr-mid: #cccccc;
+    --font-shadow: #77777733;
+    --transition-flow: 250ms;
+    --menu-bdr-rad: 0.75rem;
+}
+
+html
+{
+    background-color: var(--bcg-base);
+    scroll-behavior: smooth;
+}
+
+body
+{
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background-color: var(--bcg-base);
+}
+
+html:has(.edit_modal_base.active) body
+{
+    overflow: hidden;
+}
+
+@supports(-webkit-tap-highlight-color: var(--bcg-trpnt))
+{
+    body
+    {
+        -webkit-tap-highlight-color: var(--bcg-trpnt);
+    }
+}
+
+.base
+{
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+}
+
+.base .under
+{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.under .u-text
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+}
+
+.under .title
+{
+    width: 100%;
+    text-align: center;
+    font-size: 1.25rem;
+    color: var(--font-clr-heavy);
+}
+
+.under .topic
+{
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--font-clr-mid);
+}
+
+.menu
+{
+    position: fixed;
+    top: calc((0px + var(--menu-pos-top)));
+    left: calc((0px + var(--menu-pos-left)));
+    width: 300px;
+    border-radius: var(--menu-bdr-rad);
+    box-shadow: 0 0 0.625rem 0.125rem var(--bcg-shade);
+    background-color: var(--bcg-bright);
+    visibility: hidden;
+}
+
+.menu.visible
+{
+    visibility: visible;
+}
+
+.menu .list
+{
+    width: 100%;
+    padding: 0.5rem;
+    list-style: none;
+    background-color: var(--bcg-trpnt);
+}
+
+.list .item
+{
+    position: relative;
+    width: 100%;
+    height: 3.125rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3125rem 0.5rem;
+    padding: 0 0.5rem;
+    transition: all var(--transition-flow) ease-in-out;
+    cursor: pointer;
+}
+
+.item:hover, .item:active
+{
+    border-radius: var(--menu-bdr-rad);
+    background-color: var(--font-shadow);
+}
+
+.item.share-item::after
+{
+    content: '>';
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    color: var(--bcg-base);
+    font-size: 1.3125rem;
+    transform: translateY(-50%);
+}
+
+.item .icon
+{
+    width: 1.3125rem;
+    height: 1.3125rem;
+}
+
+.icon .svg
+{
+    width: 100%;
+    height: 100%;
+    fill: var(--bcg-base);
+}
+
+.item .text
+{
+    width: fit-content;
+    color: var(--bcg-base);
+    font-size: 1rem;
+}
+
+.item .sub-menu
+{
+    position: absolute;
+    bottom: 50%;
+    width: 11.875rem;
+    border-radius: var(--menu-bdr-rad);
+    box-shadow: 0 0 0.625rem 0.125rem var(--bcg-shade);
+    background-color: var(--bcg-bright);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-flow) ease-in-out;
+    z-index: 2;
+}
+
+.sub-menu.left
+{
+    left: -12rem;
+    right: unset;
+}
+
+.sub-menu.center
+{
+    right: 0.5rem;
+    left: unset;
+    bottom: 100%;
+}
+
+.sub-menu.right
+{
+    right: -12rem;
+    left: unset;
+}
+
+.menu.visible .item.share-item:hover .share-menu
+{
+    opacity: 1;
+    visibility: visible;
+}

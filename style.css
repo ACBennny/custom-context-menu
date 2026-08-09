@@ -12,6 +12,10 @@
     box-sizing: border-box;
     scrollbar-width: thin;
     scrollbar-color: var(--bcg-handle) var(--bcg-trpnt);
+    -moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 html:root

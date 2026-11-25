@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://ac-custom-context-menu.netlify.app/*"
+  to = "https://custom-context-menu.abcx.fyi/:splat"
+  status = 301
+  force = true
